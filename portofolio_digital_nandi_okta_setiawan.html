@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nandi Okta Setiawan | Portofolio Digital</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Poppins -->
+                    <colors: {
+                        darkBg: '#090D16',
+                        darkCard: '#111827',
+                        accentBlue: '#3B82F6',
+                        accentGreen: '#10B981',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #090D16;
+            color: #F3F4F6;
+            overflow-x: hidden;
+        }
+        .glow-blue {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
+        }
+        .glow-green {
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        #asteroid-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-100 antialiased selection:bg-accentBlue selection:text-white relative">
+
+    <!-- Canvas Animation Asteroid Background -->
+    <canvas id="asteroid-canvas"></canvas>
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-card bg-darkBg/80 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="text-xl font-bold tracking-wider text-white flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-accentGreen inline-block"></span>
+                Nandi<span class="text-accentBlue">.OS</span>
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#hero" class="hover:text-accentBlue transition-colors duration-200">Beranda</a>
+                <a href="#about" class="hover:text-accentBlue transition-colors duration-200">Tentang Saya</a>
+                <a href="#skills" class="hover:text-accentBlue transition-colors duration-200">Keahlian</a>
+                <a href="#projects" class="hover:text-accentBlue transition-colors duration-200">Proyek</a>
+                <a href="#contact" class="hover:text-accentBlue transition-colors duration-200">Kontak</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-gray-800 px-6 py-4 space-y-3">
+            <a href="#hero" class="block hover:text-accentBlue py-1">Beranda</a>
+            <a href="#about" class="block hover:text-accentBlue py-1">Tentang Saya</a>
+            <a href="#skills" class="block hover:text-accentBlue py-1">Keahlian</a>
+            <a href="#projects" class="block hover:text-accentBlue py-1">Proyek</a>
+            <a href="#contact" class="block hover:text-accentBlue py-1">Kontak</a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- 1. HERO SECTION -->
+        <section id="hero" class="min-h-[calc(100vh-5rem)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden z-10">
+            <!-- Background Decorative Glows -->
+            <div class="absolute -top-20 -left-20 w-96 h-96 bg-accentBlue/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-accentGreen/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Kolom Kiri: Teks & Tombol -->
+                <div class="space-y-6 text-center lg:text-left order-2 lg:order-1">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card text-xs sm:text-sm text-accentGreen border border-accentGreen/30">
+                        <i class="fa-solid fa-circle text-[8px] animate-pulse"></i>
+                        <span>Manajemen Perkantoran & Layanan Bisnis</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Halo, Saya <br class="hidden sm:inline"/>
+                        <span class="bg-gradient-to-r from-accentBlue via-teal-400 to-accentGreen bg-clip-text text-transparent">
+                            Nandi Okta Setiawan
+                        </span>
+                    </h1>
+
+                    <p class="text-gray-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-light">
+                        Siswa SMK Cyber Media yang berdedikasi tinggi dalam bidang administrasi perkantoran modern, tata kelola dokumen, dan pengembangan keahlian digital.
+                    </p>
+
+                    <!-- Tombol Follow Me Instagram & TikTok -->
+                    <div class="pt-2 flex flex-wrap gap-3 justify-center lg:justify-start items-center">
+                        <a href="https://instagram.com/astr1xoo" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-medium text-sm shadow-lg hover:shadow-pink-500/25 transition-all duration-300 transform hover:-translate-y-0.5">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://tiktok.com/@nandyi1i" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-gray-800 to-black border border-gray-700 hover:border-cyan-400 text-white font-medium text-sm shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:-translate-y-0.5">
+                            <i class="fa-brands fa-tiktok text-lg text-cyan-400"></i>
+                            <span>TikTok</span>
+                        </a>
+                        <a href="#contact" 
+                           class="inline-flex items-center gap-2 px-5 py-3 rounded-xl glass-card text-gray-200 hover:text-white hover:border-accentGreen/50 font-medium text-sm transition-all duration-300">
+                            <span>Hubungi</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan: Foto Profil -->
+                <div class="order-1 lg:order-2 flex justify-center items-center">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 group">
+                        <!-- Frame Decorator -->
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-accentBlue to-accentGreen opacity-50 blur-lg group-hover:opacity-80 transition duration-500"></div>
+                        
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden glass-card p-2 border border-gray-700/50">
+                            <img src="https://placehold.co/600x600/111827/3B82F6?text=Nandi+Okta+S" 
+                                 alt="Foto Profil Nandi Okta Setiawan" 
+                                 class="w-full h-full object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ABOUT SECTION -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-gray-800/60 bg-darkCard/30 relative z-10">
+                <div class="glass-card rounded-2xl p-6 sm:p-10 border border-gray-800 shadow-xl space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-1 flex flex-col items-center text-center p-4 bg-darkBg/60 rounded-xl border border-gray-800">
+                            <i class="fa-solid fa-graduation-cap text-4xl text-accentBlue mb-3"></i>
+                            <h3 class="font-semibold text-lg text-white">Pendidikan</h3>
+                            <p class="text-sm text-gray-400 mt-1">SMK Cyber Media</p>
+                            <span class="mt-2 text-xs bg-accentBlue/20 text-accentBlue px-3 py-1 rounded-full font-medium">MPLB</span>
+                        </div>
+
+                        <div class="md:col-span-2 space-y-4">
+                            <p class="text-gray-300 leading-relaxed text-base">
+                                Saya adalah siswa aktif di <span class="text-white font-medium">SMK Cyber Media</span> dengan konsentrasi keahlian <span class="text-accentBlue font-medium">Manajemen Perkantoran dan Layanan Bisnis (MPLB)</span>. Memiliki ketertarikan tinggi dalam tata kelola administrasi bisnis modern, kearsipan digital, dan pelayanan prima.
+                            </p>
+                            <p class="text-gray-300 leading-relaxed text-base">
+                                Saat ini saya berfokus untuk mengembangkan wawasan profesional dan siap untuk <span class="text-accentGreen font-medium">mencari pengalaman kerja maupun magang</span> di bidang perkantoran guna mengimplementasikan ilmu teknis dan operasional yang telah saya pelajari.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SKILL SECTION -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-gray-800/60">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-wide">Keahlian</h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-accentBlue to-accentGreen mx-auto mt-3 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- ADVANCE SKILLS -->
+                    <div class="glass-card rounded-2xl p-6 border border-gray-800 relative group hover:border-accentBlue/50 transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-accentBlue font-bold">
+                                <i class="fa-solid fa-award text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-white">Tingkat Mahir</h3>
+                                <p class="text-xs text-gray-400">Advance Level</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="p-3 bg-darkBg/50 rounded-xl border border-gray-800/80 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-file-word text-blue-500 text-xl"></i>
+                                    <span class="font-medium text-gray-200">Microsoft Word</span>
+                                </div>
+                                <span class="text-xs px-2 py-1 bg-blue-500/20 text-blue-400 rounded">Mahir</span>
+                            </div>
+
+                            <div class="p-3 bg-darkBg/50 rounded-xl border border-gray-800/80 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-file-powerpoint text-orange-500 text-xl"></i>
+                                    <span class="font-medium text-gray-200">Microsoft PowerPoint</span>
+                                </div>
+                                <span class="text-xs px-2 py-1 bg-blue-500/20 text-blue-400 rounded">Mahir</span>
+                            </div>
+
+                            <div class="p-3 bg-darkBg/50 rounded-xl border border-gray-800/80 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-file-excel text-emerald-500 text-xl"></i>
+                                    <span class="font-medium text-gray-200">Microsoft Excel</span>
+                                </div>
+                                <span class="text-xs px-2 py-1 bg-blue-500/20 text-blue-400 rounded">Mahir</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INTERMEDIATE SKILLS -->
+                    <div class="glass-card rounded-2xl p-6 border border-gray-800 relative group hover:border-accentGreen/50 transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-accentGreen font-bold">
+                                <i class="fa-solid fa-layer-group text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-white">Tingkat Menengah</h3>
+                                <p class="text-xs text-gray-400">Intermediate Level</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="p-3 bg-darkBg/50 rounded-xl border border-gray-800/80 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-envelope-open-text text-teal-400 text-xl"></i>
+                                    <span class="font-medium text-gray-200">Penyuratan (Surat)</span>
+                                </div>
+                                <span class="text-xs px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded">Menengah</span>
+                            </div>
+
+                            <div class="p-3 bg-darkBg/50 rounded-xl border border-gray-800/80 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-palette text-purple-400 text-xl"></i>
+                                    <span class="font-medium text-gray-200">Canva</span>
+                                </div>
+                                <span class="text-xs px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded">Menengah</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BASIC SKILLS -->
+                    <div class="glass-card rounded-2xl p-6 border border-gray-800 relative group hover:border-blue-400/50 transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 font-bold">
+                                <i class="fa-solid fa-code text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-white">Tingkat Dasar</h3>
+                                <p class="text-xs text-gray-400">Basic Web Dev</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="p-3 bg-darkBg/50 rounded-xl border border-gray-800/80 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-brands fa-html5 text-orange-600 text-xl"></i>
+                                    <span class="font-medium text-gray-200">HTML</span>
+                                </div>
+                                <span class="text-xs px-2 py-1 bg-gray-700/50 text-gray-300 rounded">Dasar</span>
+                            </div>
+
+                            <div class="p-3 bg-darkBg/50 rounded-xl border border-gray-800/80 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-brands fa-css3-alt text-blue-500 text-xl"></i>
+                                    <span class="font-medium text-gray-200">CSS</span>
+                                </div>
+                                <span class="text-xs px-2 py-1 bg-gray-700/50 text-gray-300 rounded">Dasar</span>
+                            </div>
+
+                            <div class="p-3 bg-darkBg/50 rounded-xl border border-gray-800/80 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-brands fa-js text-yellow-400 text-xl"></i>
+                                    <span class="font-medium text-gray-200">JavaScript</span>
+                                </div>
+                                <span class="text-xs px-2 py-1 bg-gray-700/50 text-gray-300 rounded">Dasar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PROJECT SECTION -->
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-gray-800/60 bg-darkCard/30">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-wide">Proyek Saya</h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-accentBlue to-accentGreen mx-auto mt-3 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Project 1: Todolist -->
+                    <div class="glass-card rounded-2xl overflow-hidden border border-gray-800 hover:border-accentBlue/50 transition-all duration-300 flex flex-col group">
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xs font-semibold px-2.5 py-1 bg-accentBlue/10 text-accentBlue rounded-full border border-accentBlue/20">Web Application</span>
+                                    <i class="fa-solid fa-list-check text-accentBlue text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accentBlue transition-colors">Aplikasi Todolist</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    Aplikasi manajemen tugas harian yang mempermudah pencatatan, pemantauan status pekerjaan, dan efisiensi waktu operasional secara personal maupun tim.
+                                </p>
+                            </div>
+                            <div>
+                                <a href="https://share.gemini.google/2vLs5UhcHFig" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center gap-2 text-sm font-medium text-accentBlue hover:text-blue-400 transition-colors">
+                                    <span>Buka Proyek</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Inventaris Barang -->
+                    <div class="glass-card rounded-2xl overflow-hidden border border-gray-800 hover:border-accentGreen/50 transition-all duration-300 flex flex-col group">
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xs font-semibold px-2.5 py-1 bg-accentGreen/10 text-accentGreen rounded-full border border-accentGreen/20">System Management</span>
+                                    <i class="fa-solid fa-boxes-stacked text-accentGreen text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accentGreen transition-colors">Aplikasi Inventaris Barang</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    Sistem pencatatan dan pendataan stok aset barang perkantoran secara digital untuk akurasi data yang terstruktur dan mudah diakses.
+                                </p>
+                            </div>
+                            <div>
+                                <a href="https://share.gemini.google/tydGapmAX2Aa" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center gap-2 text-sm font-medium text-accentGreen hover:text-emerald-400 transition-colors">
+                                    <span>Buka Proyek</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Resepsionis -->
+                    <div class="glass-card rounded-2xl overflow-hidden border border-gray-800 hover:border-accentBlue/50 transition-all duration-300 flex flex-col group">
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xs font-semibold px-2.5 py-1 bg-accentBlue/10 text-accentBlue rounded-full border border-accentBlue/20">Layanan Perkantoran</span>
+                                    <i class="fa-solid fa-concierge-bell text-accentBlue text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accentBlue transition-colors">Aplikasi Resepsionis</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    Aplikasi tata kelola penerimaan tamu perkantoran, pendaftaran janji temu, serta integrasi pencatatan kunjungan secara profesional.
+                                </p>
+                            </div>
+                            <div>
+                                <a href="https://share.gemini.google/D25Io1pgRiku" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center gap-2 text-sm font-medium text-accentBlue hover:text-blue-400 transition-colors">
+                                    <span>Buka Proyek</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Restoran -->
+                    <div class="glass-card rounded-2xl overflow-hidden border border-gray-800 hover:border-accentGreen/50 transition-all duration-300 flex flex-col group">
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xs font-semibold px-2.5 py-1 bg-accentGreen/10 text-accentGreen rounded-full border border-accentGreen/20">Point of Sales</span>
+                                    <i class="fa-solid fa-utensils text-accentGreen text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accentGreen transition-colors">Aplikasi Restoran</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    Sistem pemesanan menu dan pengelolaan transaksi restoran berbasis digital untuk meningkatkan efisiensi alur pemesanan.
+                                </p>
+                            </div>
+                            <div>
+                                <span class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 cursor-not-allowed">
+                                    <span>Internal Project (-)</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CONTACT SECTION -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-gray-800/60 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-wide">Kontak Saya</h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-accentBlue to-accentGreen mx-auto mt-3 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Instagram Card -->
+                    <a href="https://instagram.com/astr1xoo" target="_blank" rel="noopener noreferrer" 
+                       class="glass-card p-6 rounded-2xl border border-gray-800 flex items-center gap-4 hover:border-pink-500/50 hover:bg-pink-500/5 transition-all duration-300 group">
+                        <div class="w-14 h-14 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-500 group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-instagram text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold">Instagram</h3>
+                            <p class="text-sm text-gray-400 mt-0.5">@astr1xoo</p>
+                        </div>
+                    </a>
+
+                    <!-- TikTok Card -->
+                    <a href="https://tiktok.com/@nandyi1i" target="_blank" rel="noopener noreferrer" 
+                       class="glass-card p-6 rounded-2xl border border-gray-800 flex items-center gap-4 hover:border-cyan-400/50 hover:bg-cyan-400/5 transition-all duration-300 group">
+                        <div class="w-14 h-14 rounded-xl bg-cyan-400/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-tiktok text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold">TikTok</h3>
+                            <p class="text-sm text-gray-400 mt-0.5">@nandyi1i</p>
+                        </div>
+                    </a>
+
+                    <!-- WhatsApp Card -->
+                    <a href="https://wa.me/62895340116372" target="_blank" rel="noopener noreferrer" 
+                       class="glass-card p-6 rounded-2xl border border-gray-800 flex items-center gap-4 hover:border-accentGreen/50 hover:bg-accentGreen/5 transition-all duration-300 group">
+                        <div class="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center text-accentGreen group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold">WhatsApp</h3>
+                            <p class="text-sm text-gray-400 mt-0.5">0895340116372</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800/80 glass-card bg-darkBg text-center relative z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-sm text-gray-400">
+                &copy; <span id="year"></span> <span class="text-white font-medium">Nandi Okta Setiawan</span>. Seluruh Hak Cipta Dilindungi.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic & Asteroid Action Animation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set Dynamic Year
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Mobile Menu Toggle Logic
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                const mobileLinks = mobileMenu.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // Canvas Asteroid Background Animation
+            const canvas = document.getElementById('asteroid-canvas');
+            const ctx = canvas.getContext('2d');
+
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            // Asteroid Class
+            class Asteroid {
+                constructor() {
+                    this.reset();
+                }
+
+                reset() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * -height;
+                    this.size = Math.random() * 2.5 + 1;
+                    this.speedX = (Math.random() - 0.2) * 1.5;
+                    this.speedY = Math.random() * 2 + 1;
+                    this.length = Math.random() * 40 + 20;
+                    this.color = Math.random() > 0.5 ? '#3B82F6' : '#10B981';
+                    this.opacity = Math.random() * 0.7 + 0.3;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.y > height || this.x < -100 || this.x > width + 100) {
+                        this.reset();
+                    }
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(this.x - this.speedX * (this.length / 10), this.y - this.speedY * (this.length / 10));
+                    ctx.strokeStyle = this.color;
+                    ctx.globalAlpha = this.opacity;
+                    ctx.lineWidth = this.size;
+                    ctx.lineCap = 'round';
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+
+            const asteroids = Array.from({ length: 35 }, () => new Asteroid());
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                asteroids.forEach(asteroid => {
+                    asteroid.update();
+                    asteroid.draw();
+                });
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        });
+    </script>
+</body>
+</html>
